@@ -2,9 +2,9 @@
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>QC Inspector MSB</title>
-<meta name="theme-color" content="#3F6DA3">
+<meta name="theme-color" content="#35566E">
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#EEF2F7;--ink:#26344F;--mut:#7B8AA0;--pri:#3F6DA3;--line:#DFE6EF;--ok:#2F7A5E;--oks:#E2F1EB;--ng:#A8434B;--ngs:#F8E6E7;--wr:#94681C;--wrs:#FAF0DC;--sb:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
@@ -67,6 +67,31 @@ input:focus,select:focus,textarea:focus{outline:2px solid #B9CDE4;border-color:v
 #toast{position:fixed;left:50%;bottom:calc(100px + var(--sb));z-index:70;max-width:88vw;padding:10px 18px;border-radius:14px;background:var(--ink);color:#fff;font-size:14px;text-align:center;opacity:0;transform:translate(-50%,20px);transition:.25s;pointer-events:none}
 #toast.on{opacity:1;transform:translate(-50%,0)}#toast.er{background:var(--ng)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+:root{--bg:#F3EFE8;--ink:#22303C;--mut:#7E8790;--pri:#35566E;--line:#E4DDD0;--ok:#3F7D63;--oks:#E4F0E9;--ng:#A4504F;--ngs:#F6E5E3;--wr:#9A7130;--wrs:#F7EEDB;--au:#B08D57}
+body{font:16.5px/1.5 'Manrope','Segoe UI',system-ui,sans-serif;background:radial-gradient(1100px 480px at 50% -8%,#FCFAF5,transparent),var(--bg)}
+h2,h3{font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:.2px}h3{font-size:21px}
+.top{background:linear-gradient(135deg,#1F3A4D,#35566E 60%,#4E7386);border-radius:0 0 30px 30px;padding-bottom:22px;border-bottom:2px solid var(--au);box-shadow:0 10px 30px rgba(31,58,77,.28)}
+.top h2{font-size:27px;font-weight:700}.top img{width:46px;height:46px;border-radius:14px}.rf{width:44px;height:44px}
+main{max-width:1120px;padding:18px 20px calc(124px + var(--sb))}
+.nav{max-width:740px;padding:8px;border-radius:32px;background:rgba(255,253,249,.95);border:1px solid #E9E1D2;box-shadow:0 14px 40px rgba(31,58,77,.22)}
+.nav button{font-size:13.5px;padding:6px 0;gap:3px}.nav i{width:62px;height:40px;border-radius:20px}.nav svg{width:27px;height:27px}
+.cd{border:1px solid #EEE7DA;border-radius:20px;padding:16px 18px;box-shadow:0 3px 14px rgba(43,52,60,.06)}.cd b{font-size:17px}
+.chip{font-size:13px;padding:3px 12px}.dots{gap:8px}.dots u{width:32px;height:32px;font-size:16px}
+.chips button{font-size:14.5px;padding:9px 18px}.chips .on{background:var(--pri)}
+input,select,textarea{padding:13px 15px;border-radius:14px;font-size:16px}
+.btn{padding:16px;border-radius:16px;font-size:16px;background:linear-gradient(135deg,#2C4A60,#41698A);box-shadow:0 6px 16px rgba(44,74,96,.25)}
+.mg{gap:12px}.mt{padding:16px;gap:8px;border:1px solid #EEE7DA;border-radius:20px}.mt .em{font-size:32px}.mt b{font-size:17px}
+.fm{padding:18px;border-radius:22px}.pl button{padding:11px 18px;font-size:15px}.kp b{font-size:26px}.kp div{padding:14px 6px}
+.seg{display:flex;gap:6px;padding:5px;background:#EAE3D6;border-radius:18px;margin-bottom:12px}.seg button{flex:1;padding:11px 8px;border-radius:14px;font-weight:700;font-size:14.5px;color:#6D746F}.seg em{font-style:normal;margin-left:6px;font-size:12px;opacity:.7}.seg .on{background:#fff;color:var(--pri);box-shadow:0 3px 10px rgba(31,58,77,.12)}
+.ps{display:block;margin-bottom:10px}.ps span{font-size:12px;font-weight:700;color:var(--mut)}
+.tb{display:none;background:#fff;border:1px solid #EEE7DA;border-radius:20px;padding:10px;margin:10px 0 12px}.tb.open{display:block}
+.tn{display:flex;align-items:center;gap:6px;padding:9px 10px;border-radius:12px;font-weight:600;font-size:15.5px}.tn .lb{flex:1;cursor:pointer;min-width:0}
+.tn em{font-style:normal;font-size:12px;font-weight:700;padding:1px 9px;border-radius:99px;background:#EFE9DD;color:#6D746F}.tn.on{background:#E9EFF4;color:var(--pri)}
+.tn.l1{margin-left:18px}.tn.l2{margin-left:36px;font-weight:500}.ar{width:28px;height:28px;border-radius:8px;color:var(--mut);transition:transform .2s}.ar.o{transform:rotate(90deg)}.ar.x{visibility:hidden}
+.wr2{display:block}
+@media(min-width:860px){.wr2{display:grid;grid-template-columns:330px 1fr;gap:22px;align-items:start}.wr2 aside{position:sticky;top:112px;max-height:calc(100vh - 230px);overflow:auto}.tb{display:block!important;margin-top:0}.twb{display:none}}
+.chip.na{background:#ECEEF0;color:#6B747C}.dots u.na{filter:none;opacity:1;background:#ECEEF0;border-color:#C9CFD4}.pl .na.on{background:#7B8790}
 </style></head>
 <body><div id="bar"></div><div id="app"><div class="sp"><img src="icon-192.png" alt=""><i></i></div></div><div id="toast"></div>
 <div id="sh"><div class="bd" data-x="c"></div><div class="pn" id="shp"></div></div>
@@ -83,12 +108,12 @@ const KS=Object.keys(MD),PL=['okng','status','leak'];
 const P={task:'<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/>',cal:'<rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/>',prog:'<path d="M18 20V10M12 20V4M6 20v-6"/>',fin:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',prof:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'};
 const NAV=[['task','Tugas','#4A76A8,#6FA3DB'],['cal','Jadwal','#E08A2E,#F5B85A'],['prog','Progres','#2F9E74,#5CCB9C'],['fin','Final','#7A5BD0,#A48BEB'],['prof','Profil','#D45C8A,#F08DB0']];
 const TT={task:['Tugas','Pilih pengiriman, lalu isi inspeksi'],cal:['Jadwal Kirim','Ketuk tanggal untuk melihat unit'],prog:['Progres','Ringkasan hasil inspeksi'],fin:['Final Inspection','Hasil akhir per unit'],prof:['Profil','Akun dan kalibrasi alat']};
-const S={t:LS.qt||'',b:null,fi:[],mod:{},tab:'task',lim:60,f:{c:'',m:'',d:'',q:'',r:'',cu:''}};
+const S={t:LS.qt||'',b:null,fi:[],mod:{},tab:'task',lim:60,op:{},tw:false,f:{c:'',m:'',d:'',q:'',r:'',cu:'',k:'',p:''}};
 const now=new Date();S.y=now.getFullYear();S.mo=now.getMonth();
 const pad=n=>('0'+n).slice(-2),ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 const dfmt=d=>d?+d.slice(8,10)+' '+MO[+d.slice(5,7)-1].slice(0,3)+' '+d.slice(0,4):'-';
 const short=c=>String(c||'').replace(/^PT\s+/i,'');
-const cls=s=>!s?'':/^(accept|ok)$/i.test(s)?'ok':/^(reject|ng|bocor|tetes)$/i.test(s)?'ng':'wr';
+const cls=s=>!s?'':/^(accept|ok)$/i.test(s)?'ok':/^(reject|ng|bocor|tetes)$/i.test(s)?'ng':/^n\/?a$/i.test(s)?'na':'wr';
 const cnt=(a,k)=>a.reduce((m,o)=>(m[k(o)]=(m[k(o)]||0)+1,m),{});
 const put=(k,v)=>{try{LS[k]=JSON.stringify(v)}catch(e){}};
 const empty=t=>`<div class="cd mut" style="text-align:center;cursor:default">${t}</div>`;
@@ -100,8 +125,9 @@ async function api(q){busy(1);try{const r=await fetch(API,{method:'POST',body:JS
  if(!j.ok){if(j.err==='AUTH'){out();throw Error('Sesi berakhir, silakan masuk lagi')}throw Error(j.err)}return j}
  catch(e){throw e.message==='Failed to fetch'?Error('Tidak ada koneksi ke server'):e}finally{busy(-1)}}
 const rowsOf=j=>j.rows.map(r=>{const o={};j.cols.forEach((c,i)=>o[c]=r[i]);o.row=r[r.length-1];return o});
-async function loadFI(){const j=await api({a:'list',m:'Final_Inspection'});
- S.fi=rowsOf(j).filter(o=>o.Kode_Serial).map(o=>(o.d=String(o.Tanggal_Kirim_Diminta||'').slice(0,10),o));put('qfi',S.fi)}
+async function loadFI(){const[j,ju]=await Promise.all([api({a:'list',m:'Final_Inspection'}),api({a:'list',m:'FitUp_Inspection'})]),kt={};
+ rowsOf(ju).forEach(r=>{if(r.Kode_Serial)kt[r.Kode_Serial]=r.Kategori});S.mod.FitUp_Inspection=ju;
+ S.fi=rowsOf(j).filter(o=>o.Kode_Serial).map(o=>(o.d=String(o.Tanggal_Kirim_Diminta||'').slice(0,10),o.k=/built/i.test(kt[o.Kode_Serial]||'')?'Builtup':/counter/i.test(kt[o.Kode_Serial]||'')?'Counterweight':'',o));put('qfi',S.fi)}
 
 // ---------- Login & start ----------
 async function login(){$('#app').innerHTML=`<div class=lg><img src="icon-192.png" alt=""><h2>QC Inspector</h2><small>PT Murinda Sentra Baja</small><select id=lu><option>Memuat pengguna…</option></select><input id=lp type=password placeholder=Password autocomplete=current-password><button class=btn id=lb data-a=lg>Masuk</button></div>`;
@@ -122,39 +148,33 @@ const V={task,cal,prog,fin,prof};
 function draw(){const t=S.tab,h=TT[t];$('#ht').textContent=h[0];$('#hs').textContent=t==='task'&&S.b?'Halo, '+S.b.u.insp:h[1];
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
  $('#main').innerHTML=S.b?V[t]():'<div class=cd data-a=rf><b>Data belum termuat</b><br><small>Ketuk untuk mencoba lagi</small></div>'}
-const pct=o=>Math.round(KS.filter(k=>cls(o[MD[k][0]])==='ok').length/KS.length*100);
+const pct=o=>Math.round(KS.filter(k=>/^(ok|na)$/.test(cls(o[MD[k][0]]))).length/KS.length*100);
 const card=o=>`<div class=cd data-s="${o.row}"><div class=rw><b>${esc(o.Kode_Serial)}</b><em class=chip>${dfmt(o.d)}</em></div><small>${esc(short(o.Customer))} · PO ${esc(o.No_PO_Customer||'-')}</small><div class=dots>${KS.map(k=>`<u class="${cls(o[MD[k][0]])}" title="${MD[k][2]}">${MD[k][1]}</u>`).join('')}</div><div class=pg><i style="width:${pct(o)}%"></i></div></div>`;
-const cf=()=>S.fi.filter(o=>!S.f.cu||o.Customer===S.f.cu);
+const cf=()=>S.fi.filter(o=>(!S.f.k||o.k===S.f.k)&&(!S.f.p||o.Kode_Produk===S.f.p)&&(!S.f.cu||o.Customer===S.f.cu));
 const chipsC=()=>`<div class=chips><button data-cu=""${S.f.cu?'':' class=on'}>Semua</button>${[...new Set(S.fi.map(o=>o.Customer))].filter(Boolean).sort().map(c=>`<button data-cu="${esc(c)}"${S.f.cu===c?' class=on':''}>${esc(short(c))}</button>`).join('')}</div>`;
 const srt=(a,b)=>a.d<b.d?-1:a.d>b.d?1:a.Kode_Serial<b.Kode_Serial?-1:1;
 
-function tasks(){const f=S.f,q=f.q.toLowerCase();return S.fi.filter(o=>(!f.c||o.Customer===f.c)&&(!f.m||o.d.slice(0,7)===f.m)&&(!f.d||o.d===f.d)&&(!q||(o.Kode_Serial+' '+o.Customer+' '+o.No_PO_Customer+' '+o.Kode_Produk).toLowerCase().includes(q))).sort(srt)}
+function tasks(){const f=S.f,q=f.q.toLowerCase();return S.fi.filter(o=>(!f.k||o.k===f.k)&&(!f.p||o.Kode_Produk===f.p)&&(!f.c||o.Customer===f.c)&&(!f.m||o.d.slice(0,7)===f.m)&&(!f.d||o.d===f.d)&&(!q||(o.Kode_Serial+' '+o.Customer+' '+o.No_PO_Customer+' '+o.Kode_Produk).toLowerCase().includes(q))).sort(srt)}
 function tList(){const A=tasks();return `<small>${A.length} tugas</small>`+(A.slice(0,S.lim).map(card).join('')||empty('Tidak ada tugas untuk filter ini'))+more(A.length)}
-function task(){const f=S.f,A=S.fi.filter(o=>!f.c||o.Customer===f.c),B=A.filter(o=>!f.m||o.d.slice(0,7)===f.m),
- cc=cnt(S.fi,o=>o.Customer),mc=cnt(A,o=>o.d.slice(0,7)),dc=cnt(B,o=>o.d),
- op=(s,v,l)=>`<option value="${esc(v)}"${s===v?' selected':''}>${esc(l)}</option>`;
- return `<div class=fl><label><span>Customer</span><select data-k=c>${op(f.c,'','Semua customer ('+S.fi.length+')')}${Object.keys(cc).filter(Boolean).sort().map(c=>op(f.c,c,c+' ('+cc[c]+')')).join('')}</select></label>
-<label><span>Bulan kirim</span><select data-k=m>${op(f.m,'','Semua bulan')}${Object.keys(mc).filter(Boolean).sort().map(m=>op(f.m,m,m.slice(5)+' - '+MO[+m.slice(5)-1]+' ('+mc[m]+')')).join('')}</select></label>
-<label><span>Tanggal kirim</span><select data-k=d${f.m?'':' disabled'}>${op(f.d,'','Semua tanggal')}${Object.keys(dc).filter(Boolean).sort().map(d=>op(f.d,d,dfmt(d)+' ('+dc[d]+')')).join('')}</select></label></div>
-<div class=sr><input id=q type=search placeholder="Cari serial, PO, produk…" value="${esc(f.q)}"></div><div id=ls>${tList()}</div>`}
+function task(){return seg()+`<div class=wr2><aside><button class="btn gh twb" data-a=tw>Filter customer · bulan · tanggal ${S.tw?'▴':'▾'}</button><div class="tb${S.tw?' open':''}">${tree()}</div></aside><section>${psel()}<div class=sr><input id=q type=search placeholder="Cari serial, PO, produk…" value="${esc(S.f.q)}"></div><div id=ls>${tList()}</div></section></div>`}
 
 function cal(){const y=S.y,m=S.mo,by={};cf().forEach(o=>{if(o.d)(by[o.d]=by[o.d]||[]).push(o)});
  const off=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),td=ymd(new Date());let tot=0,done=0,h='';
  for(let i=0;i<off;i++)h+='<span class="dy e"></span>';
  for(let d=1;d<=dim;d++){const k=y+'-'+pad(m+1)+'-'+pad(d),a=by[k]||[],n=a.length;tot+=n;done+=a.filter(o=>o['Hasil Akhir']==='Accept').length;
   h+=`<button class="dy${n?' has':''}${k===td?' td':''}"${n?` data-d="${k}"`:''}><span>${d}</span>${n?`<em>${n}</em>`:''}</button>`}
- return chipsC()+`<div class=cb><div class=cn><button data-nv=-1 aria-label="Bulan sebelumnya">‹</button><h3>${MO[m]} ${y}</h3><button data-nv=1 aria-label="Bulan berikutnya">›</button></div><div class=cg>${['Sen','Sel','Rab','Kam','Jum','Sab','Min'].map(x=>`<small>${x}</small>`).join('')}${h}</div></div><div class=kp><div><b>${tot}</b><small>Pengiriman</small></div><div><b>${done}</b><small>Lulus final</small></div><div><b>${tot-done}</b><small>Belum lulus</small></div></div>`}
+ return seg()+chipsC()+`<div class=cb><div class=cn><button data-nv=-1 aria-label="Bulan sebelumnya">‹</button><h3>${MO[m]} ${y}</h3><button data-nv=1 aria-label="Bulan berikutnya">›</button></div><div class=cg>${['Sen','Sel','Rab','Kam','Jum','Sab','Min'].map(x=>`<small>${x}</small>`).join('')}${h}</div></div><div class=kp><div><b>${tot}</b><small>Pengiriman</small></div><div><b>${done}</b><small>Lulus final</small></div><div><b>${tot-done}</b><small>Belum lulus</small></div></div>`}
 
 function prog(){const A=cf(),n=A.length||1;let acc=0;
- const rows=KS.map(k=>{const c={ok:0,wr:0,ng:0,z:0};A.forEach(o=>c[cls(o[MD[k][0]])||'z']++);acc+=c.ok;
+ const rows=KS.map(k=>{const c={ok:0,wr:0,ng:0,z:0};A.forEach(o=>{const z=cls(o[MD[k][0]])||'z';c[z==='na'?'ok':z]++});acc+=c.ok;
   return `<div class=cd style="cursor:default"><div class=rw><b>${MD[k][1]} ${MD[k][2]}</b><small>${c.ok} lulus · ${c.wr} proses · ${c.ng} reject · ${c.z} belum</small></div><div class=st>${['ok','wr','ng'].map(s=>`<i class=${s} style="width:${c[s]/n*100}%"></i>`).join('')}</div></div>`}).join('');
  const p=Math.round(acc/(n*KS.length)*100),fa=A.filter(o=>o['Hasil Akhir']==='Accept').length,rj=A.filter(o=>KS.some(k=>cls(o[MD[k][0]])==='ng')).length;
- return chipsC()+`<div class=hero><div class=ring style="--p:${p}"><b>${p}%</b></div><div><h3>Progres inspeksi</h3><small>${A.length} unit · ${KS.length} tahap</small></div></div><div class=kp><div><b>${A.length}</b><small>Total unit</small></div><div><b>${fa}</b><small>Lulus final</small></div><div><b>${rj}</b><small>Ada reject</small></div></div>`+rows}
+ return seg()+chipsC()+`<div class=hero><div class=ring style="--p:${p}"><b>${p}%</b></div><div><h3>Progres inspeksi</h3><small>${A.length} unit · ${KS.length} tahap</small></div></div><div class=kp><div><b>${A.length}</b><small>Total unit</small></div><div><b>${fa}</b><small>Lulus final</small></div><div><b>${rj}</b><small>Ada reject</small></div></div>`+rows}
 
-function fList(){const q=S.f.q.toLowerCase(),r=S.f.r,A=S.fi.filter(o=>{const h=o['Hasil Akhir']||'Belum';return(!r||h===r)&&(!q||(o.Kode_Serial+' '+o.Customer+' '+(o['No Release Note']||'')).toLowerCase().includes(q))}).sort(srt);
+function fList(){const q=S.f.q.toLowerCase(),r=S.f.r,A=S.fi.filter(o=>{const h=o['Hasil Akhir']||'Belum';return(!r||h===r)&&(!S.f.k||o.k===S.f.k)&&(!S.f.p||o.Kode_Produk===S.f.p)&&(!q||(o.Kode_Serial+' '+o.Customer+' '+(o['No Release Note']||'')).toLowerCase().includes(q))}).sort(srt);
  return `<small>${A.length} unit</small>`+(A.slice(0,S.lim).map(o=>`<div class=cd data-s="${o.row}"><div class=rw><b>${esc(o.Kode_Serial)}</b><em class="chip ${cls(o['Hasil Akhir'])}">${esc(o['Hasil Akhir']||'Belum')}</em></div><small>${esc(short(o.Customer))} · RN ${esc(o['No Release Note']||'-')} · ${o['Disetujui QC Manager']?'Disetujui':'Belum disetujui'}</small></div>`).join('')||empty('Tidak ada data'))+more(A.length)}
 function fin(){const c=[['','Semua'],['Accept','Accept'],['Conditional Accept','Conditional'],['Reject','Reject'],['Belum','Belum']];
- return `<div class=sr><input id=q type=search placeholder="Cari serial, customer, release note…" value="${esc(S.f.q)}"></div><div class=chips>${c.map(x=>`<button data-r="${x[0]}"${S.f.r===x[0]?' class=on':''}>${x[1]}</button>`).join('')}</div><div id=ls>${fList()}</div>`}
+ return seg()+psel()+`<div class=sr><input id=q type=search placeholder="Cari serial, customer, release note…" value="${esc(S.f.q)}"></div><div class=chips>${c.map(x=>`<button data-r="${x[0]}"${S.f.r===x[0]?' class=on':''}>${x[1]}</button>`).join('')}</div><div id=ls>${fList()}</div>`}
 
 function prof(){const u=S.b.u,k=(S.b.kal&&S.b.kal.items)||[],c=s=>k.filter(x=>x.st===s).length;
  return `<div class=cd style="text-align:center;cursor:default"><div class=av>${esc((u.insp||u.u||'?')[0])}</div><h3>${esc(u.insp||u.u)}</h3><small>${esc(u.role)}${u.canWrite?'':' · hanya lihat'}</small>${u.ttd?`<div><img class=ttd src="${esc(u.ttd)}" alt="" onerror="this.remove()"></div>`:''}</div>
@@ -166,7 +186,7 @@ function prof(){const u=S.b.u,k=(S.b.kal&&S.b.kal.items)||[],c=s=>k.filter(x=>x.
 function sheet(t,s,b,bk){S.bk=bk;$('#shp').innerHTML=`<div class=hd>${bk?'<button class=ibk data-x=b aria-label=Kembali>‹</button>':''}<div><h3>${esc(t)}</h3><small>${esc(s||'')}</small></div><button class=ibk data-x=c aria-label=Tutup>✕</button></div>${b}`;$('#sh').classList.add('on');$('#shp').scrollTop=0}
 function openDay(d){S.last=()=>openDay(d);const A=cf().filter(o=>o.d===d).sort(srt);sheet(dfmt(d),A.length+' unit dikirim',A.map(card).join(''))}
 function openSerial(o,bk){S.cur=o;S.sb=bk;
- sheet(o.Kode_Serial,short(o.Customer)+' · PO '+(o.No_PO_Customer||'-')+' · Kirim '+dfmt(o.d),`<div class=mg>${S.b.mods.filter(m=>MD[m.k]).map(m=>{const s=o[MD[m.k][0]];return `<button class=mt data-m=${m.k}><span class=em>${MD[m.k][1]}</span><b>${MD[m.k][2]}</b><em class="chip ${cls(s)}">${esc(s||'Belum')}</em></button>`}).join('')}<button class="mt fin" data-m=Final_Inspection><span class=em>✅</span><b>Final Inspection</b><em class="chip ${cls(o['Hasil Akhir'])}">${esc(o['Hasil Akhir']||'Belum')}</em></button></div>`,bk)}
+ sheet(o.Kode_Serial,short(o.Customer)+' · PO '+(o.No_PO_Customer||'-')+' · Kirim '+dfmt(o.d),`<div class=mg>${S.b.mods.filter(m=>MD[m.k]).map(m=>{const s=o[MD[m.k][0]];return `<button class=mt data-m=${m.k}><span class=em>${MD[m.k][1]}</span><b>${MD[m.k][2]}</b><em class="chip ${cls(s)}">${esc(s||'Belum')}</em></button>`}).join('')}<button class="mt fin" data-m=Final_Inspection><span class=em>✅</span><b>Final Inspection</b><em class="chip ${cls(o['Hasil Akhir'])}">${esc(o['Hasil Akhir']||'Belum')}</em></button></div><button class="btn" data-a=rp style="margin-top:14px">📄 Cetak / Export PDF Report Final Inspection</button>`,bk)}
 async function openForm(k,o){const m=S.b.mods.find(x=>x.k===k),bk=()=>openSerial(o,S.sb);
  if(!m)return toast('Modul '+k+' belum ada di Code.gs. Perbarui backend dulu.',1);
  sheet(m.t,o.Kode_Serial,'<div class=sk></div><div class=sk></div>',bk);
@@ -183,13 +203,13 @@ async function openForm(k,o){const m=S.b.mods.find(x=>x.k===k),bk=()=>openSerial
   e.className='prev'+(ok==null?'':ok?' ok':' ng');e.textContent=ok==null?'':(ok?'✓ Sesuai · ':'✗ Di luar batas · ')+tx;
   if(ok!=null&&!T.st&&Vv.Status!==undefined)pick('Status',ok?'Accept':'Reject')};
  const fh=(f,i)=>{const h=f[0],t=f[1],l=f[2],v=Vv[h],a='data-i='+i,dis=ro?' disabled':'';let x;
-  if(t==='s'&&PL.includes(l))x=`<div class=pl data-p=${i}>${(L[l]||[]).map(s=>`<button type=button data-pv="${esc(s)}" class="${cls(s)}${v===s?' on':''}"${dis}>${esc(s)}</button>`).join('')}</div>`;
+  if(t==='s'&&PL.includes(l))x=`<div class=pl data-p=${i}>${(L[l]||[]).concat(k==='NDT_Report'&&l==='status'?['N/A']:[]).map(s=>`<button type=button data-pv="${esc(s)}" class="${cls(s)}${v===s?' on':''}"${dis}>${esc(s)}</button>`).join('')}</div>`;
   else if(t==='s'){const ls=l==='defect'?L.defect.map(d=>[d[0],d[0]+' · '+d[1]]):(L[l]||[]).map(s=>[s,s]);x=`<select ${a}${dis}><option value="">—</option>${ls.map(p=>`<option value="${esc(p[0])}"${v===String(p[0])?' selected':''}>${esc(p[1])}</option>`).join('')}</select>`}
   else if(t==='x')x=`<textarea ${a} rows=2${ro?' readonly':''}>${esc(v)}</textarea>`;
   else x=`<input ${a} value="${esc(v)}" type="${t==='n'?'number':t==='dt'?'datetime-local':'text'}"${t==='n'?' inputmode=decimal step=any':''}${t==='i'||ro?' readonly':''}>`;
   return `<div class=f><span>${esc(h)}</span>${x}</div>`};
  S.fm={V:Vv,m:m,T:T,pick:pick,pv:pv,row:r};
- sheet(m.t,o.Kode_Serial+' · '+short(o.Customer),`<div class=fm>${m.f.map(fh).join('')}<div id=pv class=prev></div>${ro?'<small>Peran Anda hanya dapat melihat data.</small>':'<button class=btn id=sv data-a=sv>Simpan</button>'}</div>`,bk);pv()}
+ sheet(m.t,o.Kode_Serial+' · '+short(o.Customer),`<div class=fm>${m.f.map(fh).join('')}<div id=pv class=prev></div>${k==='NDT_Report'?'<small>Tidak semua unit memerlukan NDT. Pilih N/A agar tahap Coating dan Final tidak menunggu NDT.</small>':''}${ro?'<small>Peran Anda hanya dapat melihat data.</small>':'<button class=btn id=sv data-a=sv>Simpan</button>'}${k==='Final_Inspection'?'<button class="btn gh" data-a=rp style="margin-top:10px">Cetak / Export PDF Report</button>':''}</div>`,bk);pv()}
 async function save(){const F=S.fm,o=S.cur,k=F.m.k,b=$('#sv');b.classList.add('ld');
  try{const r=F.row,j=await api({a:'save',m:k,id:r._id,sr:o.Kode_Serial,v:F.V,first:!!F.m.dt&&!r[F.m.dt]});
   const c=S.mod[k];if(c){const i=c.rows.findIndex(x=>x[x.length-1]===j.row[j.row.length-1]);if(i>=0)c.rows[i]=j.row}
@@ -197,10 +217,71 @@ async function save(){const F=S.fm,o=S.cur,k=F.m.k,b=$('#sv');b.classList.add('l
   toast('Tersimpan ✓');openSerial(o,S.sb);draw();loadFI().then(draw).catch(()=>{})}
  catch(e){toast(e.message,1);b.classList.remove('ld')}}
 
+const KT=[['','Semua'],['Builtup','Builtup'],['Counterweight','Counterweight Excavator']];
+const seg=()=>`<div class=seg>${KT.map(t=>`<button data-kt="${t[0]}"${S.f.k===t[0]?' class=on':''}>${t[1]}<em>${S.fi.filter(o=>!t[0]||o.k===t[0]).length}</em></button>`).join('')}</div>`;
+const psel=()=>{const f=S.f,ps=[...new Set(S.fi.filter(o=>!f.k||o.k===f.k).map(o=>o.Kode_Produk))].filter(Boolean).sort();
+ return `<label class=ps><span>Kode produk</span><select data-k=p><option value="">Semua kode produk (${ps.length})</option>${ps.map(p=>`<option${f.p===p?' selected':''}>${esc(p)}</option>`).join('')}</select></label>`};
+function tree(){const f=S.f,A=S.fi.filter(o=>(!f.k||o.k===f.k)&&(!f.p||o.Kode_Produk===f.p)),
+ g=(a,k)=>a.reduce((m,o)=>((m[k(o)]=m[k(o)]||[]).push(o),m),{}),
+ row=(cl,on,key,lb,n,at,has)=>`<div class="tn ${cl}${on?' on':''}"><button class="ar${has?(S.op[key]?' o':''):' x'}" data-tg="${esc(key)}">▸</button><span class=lb data-sel=1 ${at}>${lb}</span><em>${n}</em></div>`;
+ let h=`<div class="tn${!f.c&&!f.m&&!f.d?' on':''}"><button class="ar x">▸</button><span class=lb data-sel=1>Semua</span><em>${A.length}</em></div>`;
+ const C=g(A,o=>o.Customer||'-');
+ Object.keys(C).sort().forEach(c=>{const M=g(C[c],o=>o.d.slice(0,7)),kc='c'+c;
+  h+=row('l0',f.c===c&&!f.m,kc,esc(c),C[c].length,`data-sc="${esc(c)}"`,1);
+  if(S.op[kc])Object.keys(M).sort().forEach(m=>{const D=g(M[m],o=>o.d),km='m'+c+m;
+   h+=row('l1',f.c===c&&f.m===m&&!f.d,km,m?m.slice(5)+' - '+MO[+m.slice(5)-1]:'Tanpa tanggal',M[m].length,`data-sc="${esc(c)}" data-sm="${m}"`,1);
+   if(S.op[km])Object.keys(D).sort().forEach(d=>{h+=row('l2',f.d===d&&f.c===c,'d'+c+d,dfmt(d),D[d].length,`data-sc="${esc(c)}" data-sm="${m}" data-sd="${d}"`,0)})})});
+ return h}
+
+// ---------- Report Final Inspection (PDF / print) ----------
+async function rep(o){const w=window.open('','_blank');if(!w)return toast('Izinkan pop-up untuk cetak',1);
+ w.document.write('<body style="font:15px sans-serif;padding:24px">Menyiapkan report…</body>');
+ try{const ms=S.b.mods.filter(m=>MD[m.k]);
+  await Promise.all(ms.map(async m=>{if(!S.mod[m.k])S.mod[m.k]=await api({a:'list',m:m.k})}));
+  const B=S.b,n=new Date(),logo=new URL('MSB_Logo.png',location.href).href,hs=o['Hasil Akhir']||'Belum lengkap',
+  tg=n.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})+', '+n.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',hour12:false}).replace('.',':'),
+  sc=s=>({ok:'g',ng:'r',na:'n',wr:'a'}[cls(s)]||'z'),pill=s=>`<span class="pl2 ${sc(s)}">${esc(s||'Belum diinspeksi')}</span>`,
+  st=ms.map(m=>({m,r:rowsOf(S.mod[m.k]).find(x=>x.Kode_Serial===o.Kode_Serial)||{}})),cn=c=>st.filter(x=>sc(x.r.Status)===c).length,
+  fv=(f,v)=>f[1]==='dt'?String(v).replace(/^(\d{4})-(\d\d)-(\d\d)/,'$3/$2/$1').slice(0,16):v,
+  info=[['Customer',o.Customer],['Kode Produk',o.Kode_Produk],['Kode Serial',o.Kode_Serial],['Kategori',o.k==='Builtup'?'Builtup':o.k?'Counterweight Excavator':'-'],['No. PO Customer',o.No_PO_Customer],['Tanggal Kirim',dfmt(o.d)],['No. Release Note',o['No Release Note']],['Tanggal Report',tg]],
+  sum=st.map((x,i)=>`<tr><td>${i+1}</td><td><b>${MD[x.m.k][2]}</b></td><td>${pill(x.r.Status)}</td><td>${esc(x.r.Inspector||x.r['Inspector/NDT Personnel']||'-')}</td><td>${x.r[x.m.dt]?esc(dfmt(String(x.r[x.m.dt]).slice(0,10))):'-'}</td></tr>`).join(''),
+  det=st.map((x,i)=>{const fs=x.m.f.filter(f=>!/^(Status|Inspector.*|Catatan)$/.test(f[0])&&x.r[f[0]]!==''&&x.r[f[0]]!=null);let t='';
+   for(let j=0;j<fs.length;j+=2)t+='<tr>'+[fs[j],fs[j+1]].map(f=>f?`<th>${esc(f[0])}</th><td>${esc(fv(f,x.r[f[0]]))}</td>`:'<th></th><td></td>').join('')+'</tr>';
+   const nt=x.r.Catatan&&x.r.Catatan!=='-'?`<div class=nt>Catatan: ${esc(x.r.Catatan)}</div>`:'';
+   return `<div class=sec><h4>${i+1}. ${MD[x.m.k][2]} ${pill(x.r.Status)}</h4>${t?`<table class=kv>${t}</table>`:'<div class=nt>Belum ada data pemeriksaan.</div>'}${nt}</div>`}).join(''),
+  ap=o['Disetujui QC Manager']||'',ins=o.Inspector||B.u.insp,fn=o.Catatan&&o.Catatan!=='-'?o.Catatan:'',
+  sg=(r,nm,im,sub)=>`<div class=sg><small>${r}</small><div class=im>${im?`<img src="${esc(im)}" onerror="this.style.display='none'">`:''}</div><b>${esc(nm||'..............................')}</b><span>${sub}</span></div>`,
+  css=`@page{size:A4;margin:13mm 12mm}*{box-sizing:border-box}body{margin:0;font:11.5px/1.5 'Manrope','Segoe UI',Arial,sans-serif;color:#22303C;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.hd{display:flex;align-items:center;gap:16px;padding-bottom:12px;border-bottom:3px solid #35566E;position:relative}.hd:after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1.5px;background:#B08D57}.hd img{height:50px}.hd div{flex:1}.hd b{font-size:16px;letter-spacing:.5px;display:block}.hd span{color:#7E8790;font-size:10.5px}.hd .no{flex:none;text-align:right}.hd .no b{font-size:12px;color:#35566E}
+h1{font:700 22px Georgia,serif;text-align:center;letter-spacing:2px;margin:24px 0 2px;color:#1F3A4D}.sub{text-align:center;color:#7E8790;margin-bottom:12px}
+.res{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:10px;margin:12px 0;border:1.5px solid}.res small{display:block;opacity:.8}.res b{font-size:18px}.res.g{background:#E4F0E9;border-color:#3F7D63;color:#2E6A50}.res.r{background:#F6E5E3;border-color:#A4504F;color:#8C3B3A}.res.a{background:#F7EEDB;border-color:#B08D57;color:#7C5A20}.res.z,.res.n{background:#F0F1F2;border-color:#B6BCC1;color:#5E666D}
+.inf{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border:1px solid #E4DDD0;border-radius:10px;padding:4px 14px}.inf div{display:flex;padding:5px 0;border-bottom:1px dashed #E4DDD0}.inf span{width:40%;color:#7E8790}.inf b{flex:1}
+h3{font:700 13px Georgia,serif;letter-spacing:1px;text-transform:uppercase;color:#35566E;margin:18px 0 6px;padding-left:8px;border-left:4px solid #B08D57}
+table{width:100%;border-collapse:collapse}th,td{padding:6px 8px;border:1px solid #E4DDD0;vertical-align:top;text-align:left}.sm th{background:#35566E;color:#fff;font-weight:600}.sm tr:nth-child(even) td{background:#F8F5EF}.kv th{width:20%;background:#F3EFE8;font-weight:600;color:#4A5560}.kv td{width:30%}
+.sec{margin:10px 0;page-break-inside:avoid}.sec h4{margin:0 0 4px;font-size:12.5px;display:flex;gap:8px;align-items:center}.nt{margin-top:4px;padding:6px 8px;background:#F8F5EF;border-radius:6px;color:#4A5560}
+.pl2{display:inline-block;padding:1px 9px;border-radius:99px;font-size:10px;font-weight:700}.pl2.g{background:#E4F0E9;color:#2E6A50}.pl2.r{background:#F6E5E3;color:#8C3B3A}.pl2.a{background:#F7EEDB;color:#7C5A20}.pl2.n{background:#ECEEF0;color:#5E666D}.pl2.z{background:#F0F1F2;color:#8A9096}
+.sgs{display:flex;gap:18px;margin-top:8px;page-break-inside:avoid}.sg{flex:1;text-align:center}.sg small{display:block;color:#7E8790}.im{height:66px;display:flex;align-items:center;justify-content:center}.im img{max-height:62px;max-width:160px}.sg b{display:block;border-top:1px solid #22303C;padding-top:4px}.sg span{color:#7E8790;font-size:10px}
+.ft{margin-top:20px;padding-top:8px;border-top:1px solid #E4DDD0;color:#7E8790;font-size:9.5px;display:flex;justify-content:space-between}`;
+  w.document.open();w.document.write(`<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Final Inspection Report - ${esc(o.Kode_Serial)}</title><style>${css}</style></head><body>
+<div class=hd><img src="${logo}"><div><b>${esc(B.cfg.nama||'PT MURINDA SENTRA BAJA')}</b><span>Quality Control Department</span></div><div class=no><span>No. Dokumen</span><b>${esc(o._id||'-')}</b></div></div>
+<h1>FINAL INSPECTION REPORT</h1><div class=sub>Laporan Hasil Pemeriksaan Akhir Produk</div>
+<div class="res ${sc(hs)}"><div><small>Hasil Akhir</small><b>${esc(hs)}</b></div><div style="text-align:right"><small>Ringkasan ${st.length} tahap</small>${cn('g')} lulus · ${cn('a')} bersyarat · ${cn('r')} reject · ${cn('n')} N/A · ${cn('z')} belum</div></div>
+<h3>Informasi Produk</h3><div class=inf>${info.map(x=>`<div><span>${x[0]}</span><b>${esc(x[1]||'-')}</b></div>`).join('')}</div>
+<h3>Ringkasan Tahapan Inspeksi</h3><table class=sm><thead><tr><th>No</th><th>Tahap</th><th>Status</th><th>Inspector</th><th>Tanggal</th></tr></thead><tbody>${sum}</tbody></table>
+<div class=nt>N/A = tahap tidak diperlukan untuk unit ini (mis. NDT).</div>
+<h3>Detail Pemeriksaan</h3>${det}${fn?`<h3>Catatan Final</h3><div class=nt>${esc(fn)}</div>`:''}
+<h3>Pengesahan</h3><div class=sgs>${sg('Dibuat oleh (QC Inspector)',ins,ins===B.u.insp?B.u.ttd:'','Inspector')}${sg('Disetujui (QC Manager)',ap||(B.mgr&&B.mgr.u),ap&&B.mgr?B.mgr.ttd:'',ap?'Disetujui':'Menunggu persetujuan')}${sg('Diterima oleh','','','Customer / Pengiriman')}</div>
+<div class=ft><span>Dicetak oleh ${esc(B.u.insp)} · ${esc(tg)}</span><span>Dihasilkan otomatis oleh QC Inspector MSB</span></div>
+<script>onload=()=>setTimeout(()=>print(),700)<\/script></body></html>`);w.document.close()
+ }catch(e){w.close();toast(e.message,1)}}
+
 // ---------- Event ----------
-function act(a){if(a==='rf')return refresh();if(a==='sv')return save();if(a==='lo')return out();if(a==='lg')return doLogin();
+function act(a){if(a==='rf')return refresh();if(a==='rp')return rep(S.cur);if(a==='tw'){S.tw=!S.tw;return draw()}if(a==='sv')return save();if(a==='lo')return out();if(a==='lg')return doLogin();
  if(a==='mo'){S.lim+=60;$('#ls').innerHTML=S.tab==='fin'?fList():tList()}}
 document.addEventListener('click',e=>{const g=s=>e.target.closest(s);let x;
+ if(x=g('[data-tg]')){const k=x.dataset.tg;S.op[k]=!S.op[k];return draw()}
+ if(x=g('[data-sel]')){const d=x.dataset;S.f.c=d.sc||'';S.f.m=d.sm||'';S.f.d=d.sd||'';if(d.sc)S.op['c'+d.sc]=true;if(d.sm)S.op['m'+d.sc+d.sm]=true;S.lim=60;S.tw=false;return draw()}
+ if(x=g('[data-kt]')){Object.assign(S.f,{k:x.dataset.kt,c:'',m:'',d:'',p:'',cu:''});S.lim=60;return draw()}
  if(x=g('[data-x]')){if(x.dataset.x==='b'&&S.bk)S.bk();else $('#sh').classList.remove('on');return}
  if(x=g('[data-pv]')){const F=S.fm,h=F.m.f[x.parentNode.dataset.p][0];F.pick(h,x.dataset.pv);if(h==='Status')F.T.st=true;F.pv();return}
  if(x=g('[data-m]'))return openForm(x.dataset.m,S.cur);
