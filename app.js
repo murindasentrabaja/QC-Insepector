@@ -15,11 +15,18 @@ st.textContent = '.ib{display:inline-flex;align-items:center;justify-content:cen
 document.head.appendChild(st);
 let tt; const toast = m => { const e = $('#toast'); e.textContent = m; e.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => e.classList.remove('on'), 2800); };
 const busy = b => $('#busy').classList.toggle('on', b);
+// Kirim lewat POST. Jika server membalas teks doGet (POST dialihkan jadi GET oleh Google), ulangi lewat GET ?p=
+async function send(o) {
+  const body = JSON.stringify(o);
+  let t = await (await fetch(API, { method: 'POST', body })).text();
+  if (/^QC Inspector MSB API aktif/.test(t)) t = await (await fetch(API + (API.includes('?') ? '&' : '?') + 'p=' + encodeURIComponent(body))).text();
+  try { return JSON.parse(t); }
+  catch (e) { throw new Error(/^\s*</.test(t) ? 'Server membalas halaman error. Periksa deployment: akses "Siapa saja" dan versi terbaru.' : 'Balasan server tidak dikenali: ' + t.slice(0, 60)); }
+}
 async function api(a, p = {}) {
   busy(true);
   try {
-    const r = await fetch(API, { method: 'POST', body: JSON.stringify(Object.assign({ a, t: S.tok }, p)) });
-    const j = await r.json();
+    const j = await send(Object.assign({ a, t: S.tok }, p));
     if (!j.ok) { if (j.err === 'AUTH') { out(true); throw new Error('Sesi berakhir, silakan masuk lagi'); } throw new Error(j.err); }
     return j;
   } finally { busy(false); }
@@ -37,7 +44,7 @@ const userField = () => S.users.length
 async function loadUsers() {
   if (/PASTE_URL/.test(API || '')) return;
   try {
-    const j = await (await fetch(API, { method: 'POST', body: JSON.stringify({ a: 'users' }) })).json();
+    const j = await send({ a: 'users' });
     if (!j.ok || !j.users || !j.users.length) throw new Error(j.err || 'kosong');
     if (JSON.stringify(j.users) !== JSON.stringify(S.users)) {
       S.users = j.users; localStorage.setItem('qcus', JSON.stringify(j.users));
