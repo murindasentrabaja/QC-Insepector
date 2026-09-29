@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const API = window.API_URL, TZ = 'Asia/Jakarta', $ = s => document.querySelector(s);
-const S = { tok: localStorage.getItem('qct') || '', B: null, users: [], d: {}, kal: [], pc: true, v: { t: 'login' }, f: {}, ncr: null, ref: null };
+const S = { tok: localStorage.getItem('qct') || '', B: null, users: (() => { try { return JSON.parse(localStorage.getItem('qcus') || '[]'); } catch (e) { return []; } })(), d: {}, kal: [], pc: true, v: { t: 'login' }, f: {}, ncr: null, ref: null };
 const PAL = ['#E4EDF7', '#E5F1EC', '#F6EBDD', '#EDE7F4', '#F3E5E8', '#E2F0F1', '#F1EEDC', '#E7EAF3', '#EAF0E4', '#F5E9E1'];
 const SVG = 'width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -38,8 +38,14 @@ async function loadUsers() {
   if (/PASTE_URL/.test(API || '')) return;
   try {
     const j = await (await fetch(API, { method: 'POST', body: JSON.stringify({ a: 'users' }) })).json();
-    if (j.ok && j.users.length) { S.users = j.users; const p = $('#lp'); if (S.v.t === 'login' && !(p && p.value)) draw(); }
-  } catch (e) { }
+    if (!j.ok || !j.users || !j.users.length) throw new Error(j.err || 'kosong');
+    if (JSON.stringify(j.users) !== JSON.stringify(S.users)) {
+      S.users = j.users; localStorage.setItem('qcus', JSON.stringify(j.users));
+      const p = $('#lp'); if (S.v.t === 'login' && !(p && p.value)) draw();
+    }
+  } catch (e) {
+    const er = $('#er'); if (S.v.t === 'login' && er && !S.users.length) er.textContent = 'Daftar username belum bisa dimuat. Periksa koneksi & deployment Apps Script.';
+  }
 }
 
 // ---------- Tampilan ----------
@@ -142,7 +148,7 @@ const A = {
     const j = await api('ncrSave', { v }); toast('NCR tersimpan: ' + j.no); await A.ncr();
   }
 };
-function out(silent) { S.tok = ''; localStorage.removeItem('qct'); S.B = null; S.d = {}; S.ncr = null; S.v = { t: 'login' }; draw(); if (!silent) toast('Anda telah keluar'); if (!S.users.length) loadUsers(); }
+function out(silent) { S.tok = ''; localStorage.removeItem('qct'); S.B = null; S.d = {}; S.ncr = null; S.v = { t: 'login' }; draw(); if (!silent) toast('Anda telah keluar'); loadUsers(); }
 
 async function boot() {
   const j = await api('boot'); S.B = j; S.kal = j.kal.items; S.pc = j.kal.pcol; S.cfgName = j.cfg.nama; S.v = { t: 'home' }; draw(); notify();
@@ -188,6 +194,7 @@ document.addEventListener('input', e => {
 document.addEventListener('change', e => { if (S.v.t === 'form') calc(mod(S.v.k)); });
 document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'lp') wrap(A.in)(); });
 setInterval(clock, 1000);
+addEventListener('online', () => { if (S.v.t === 'login') loadUsers(); });
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => { }));
 draw();
 if (S.tok && !/PASTE_URL/.test(API || '')) wrap(boot)().catch(() => { }); else loadUsers();
