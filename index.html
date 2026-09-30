@@ -2,9 +2,9 @@
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>QC Inspector MSB</title>
-<meta name="theme-color" content="#35566E">
+<meta name="theme-color" content="#E4ECF7">
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#EEF2F7;--ink:#26344F;--mut:#7B8AA0;--pri:#3F6DA3;--line:#DFE6EF;--ok:#2F7A5E;--oks:#E2F1EB;--ng:#A8434B;--ngs:#F8E6E7;--wr:#94681C;--wrs:#FAF0DC;--sb:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
@@ -92,6 +92,46 @@ input,select,textarea{padding:13px 15px;border-radius:14px;font-size:16px}
 .wr2{display:block}
 @media(min-width:860px){.wr2{display:grid;grid-template-columns:330px 1fr;gap:22px;align-items:start}.wr2 aside{position:sticky;top:112px;max-height:calc(100vh - 230px);overflow:auto}.tb{display:block!important;margin-top:0}.twb{display:none}}
 .chip.na{background:#ECEEF0;color:#6B747C}.dots u.na{filter:none;opacity:1;background:#ECEEF0;border-color:#C9CFD4}.pl .na.on{background:#7B8790}
+/* ===== Liquid Glass ===== */
+:root{--bg:#E6EDF8;--ink:#1E2B3D;--mut:#5B6A7F;--pri:#2F5F94;--line:rgba(255,255,255,.6);--gl:rgba(255,255,255,.42);--gl2:rgba(255,255,255,.66);--gb:rgba(255,255,255,.72);--gs:0 10px 30px rgba(45,75,120,.13);--hl:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.3);--fh:'Nunito','Manrope',system-ui,sans-serif;--fx:blur(22px) saturate(170%)}
+.k-td{--tc:#EA7A12}.k-tm{--tc:#6555D6}.k-sn{--tc:#12857F}
+html{background:#E4ECF7}body{background:transparent;color:var(--ink)}
+body:before{content:'';position:fixed;inset:-8%;z-index:-1;pointer-events:none;background:radial-gradient(36% 30% at 10% 6%,#9CC8F6,transparent 72%),radial-gradient(32% 28% at 92% 12%,#C9B8F6,transparent 72%),radial-gradient(38% 32% at 80% 90%,#8FDCCB,transparent 72%),radial-gradient(34% 28% at 6% 84%,#F8D2AA,transparent 72%)}
+h2,h3{font-family:var(--fh);letter-spacing:0;font-weight:800}h3{font-size:20px}.top h2{font-size:25px}
+.top,.cd,.cb,.hero,.kp div,.mt,.fm,.tb,.lg,.nav,.seg{background:var(--gl);-webkit-backdrop-filter:var(--fx);backdrop-filter:var(--fx);border:1px solid var(--gb);box-shadow:var(--gs),var(--hl)}
+.top{color:var(--ink);border-top:0;border-radius:0 0 28px 28px;flex-wrap:wrap;background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.3))}
+.top small{color:var(--mut)}.top img{background:rgba(255,255,255,.8)}
+.rf{background:var(--gl2);color:var(--pri);border:1px solid var(--gb);box-shadow:var(--hl)}
+.top .clk{order:5;flex:1 0 100%;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 14px;border-radius:16px;background:rgba(255,255,255,.5);border:1px solid var(--gb);box-shadow:var(--hl)}
+.clk b{font:800 21px/1 var(--fh);letter-spacing:.5px;font-variant-numeric:tabular-nums;color:var(--pri)}.top .clk small{font-size:13px;font-weight:700;color:var(--mut)}
+@media(min-width:700px){.top .clk{order:0;flex:none;flex-direction:column;align-items:flex-end;gap:3px;padding:7px 16px}}
+.hd{background:rgba(232,239,250,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.pn{background:rgba(236,242,251,.7);-webkit-backdrop-filter:blur(34px) saturate(180%);backdrop-filter:blur(34px) saturate(180%);border:1px solid var(--gb);border-bottom:0;box-shadow:0 -12px 40px rgba(45,75,120,.18),var(--hl)}
+.bd{background:rgba(30,45,72,.3);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pn .cd,.pn .mt,.pn .fm{background:rgba(255,255,255,.55)}.pn .cd[class*=k-]{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 16%,transparent),rgba(255,255,255,.55) 60%)}
+input,select,textarea{background:rgba(255,255,255,.55);border:1px solid var(--gb);box-shadow:inset 0 1px 3px rgba(45,75,120,.08)}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(47,95,148,.35);border-color:var(--pri)}input[readonly]{background:rgba(255,255,255,.3)}
+.btn{box-shadow:0 8px 20px rgba(47,95,148,.3),inset 0 1px 0 rgba(255,255,255,.45)}
+.btn.gh,.chips button,.pl button,.ibk,.cn button{background:var(--gl2);border:1px solid var(--gb);box-shadow:var(--hl);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btn.gh{color:var(--pri)}.btn.gh.dg{color:var(--ng)}
+.chips .on,.pl button.on{background:linear-gradient(135deg,#3F6DA3,#5B94D0);color:#fff}
+.seg button{color:var(--mut)}.seg .on{background:rgba(255,255,255,.88);color:var(--pri);box-shadow:0 3px 10px rgba(45,75,120,.14)}
+.tn.on{background:rgba(255,255,255,.7)}.tn em,.chip{background:rgba(255,255,255,.62)}
+.pg,.st{background:rgba(255,255,255,.55)}.dots u{background:rgba(255,255,255,.55)}.ring b{background:rgba(255,255,255,.88)}
+.sk{background:linear-gradient(90deg,rgba(255,255,255,.35) 25%,rgba(255,255,255,.7) 50%,rgba(255,255,255,.35) 75%);background-size:200% 100%}
+#toast{background:rgba(30,43,61,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+/* Tanda jadwal: hari ini (oranye), besok (ungu), terkirim (teal) */
+.rt{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chip.s{color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.4)}
+.chip.s.td{background:linear-gradient(135deg,#EA7A12,#F5A54A)}.chip.s.tm{background:linear-gradient(135deg,#5546CC,#8B7CEE)}.chip.s.sn{background:linear-gradient(135deg,#0E7B75,#2DB0A6)}
+.cd[class*=k-]{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 16%,transparent),var(--gl) 60%);box-shadow:var(--gs),var(--hl),inset 5px 0 0 var(--tc)}
+.lgd{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 2px 10px;font-size:12.5px;font-weight:700;color:var(--mut)}
+.lgd span{display:inline-flex;align-items:center;gap:6px}.lgd span:before{content:'';width:10px;height:10px;border-radius:50%;background:var(--tc);box-shadow:0 0 0 3px color-mix(in srgb,var(--tc) 24%,transparent)}.lgd b{color:var(--ink)}
+.tn[class*=k-] .lb:before{content:'';display:inline-block;width:9px;height:9px;margin-right:7px;border-radius:50%;background:var(--tc)}
+.dy{background:rgba(255,255,255,.32)}
+.dy.has{background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1.5px var(--tc,#B4C2D6),inset 0 1px 0 rgba(255,255,255,.9)}
+.dy em{background:var(--tc,#7A8CA5);box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.dy.td{outline:2px solid #EA7A12;outline-offset:1px}.dy.td>span{color:#C45F06}
 </style></head>
 <body><div id="bar"></div><div id="app"><div class="sp"><img src="icon-192.png" alt=""><i></i></div></div><div id="toast"></div>
 <div id="sh"><div class="bd" data-x="c"></div><div class="pn" id="shp"></div></div>
@@ -113,6 +153,11 @@ const now=new Date();S.y=now.getFullYear();S.mo=now.getMonth();
 const pad=n=>('0'+n).slice(-2),ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 const dfmt=d=>d?+d.slice(8,10)+' '+MO[+d.slice(5,7)-1].slice(0,3)+' '+d.slice(0,4):'-';
 const short=c=>String(c||'').replace(/^PT\s+/i,'');
+const SL={td:'Hari ini',tm:'Besok',sn:'Terkirim'};
+const mark=()=>{const n=new Date();S.today=ymd(n);n.setDate(n.getDate()+1);S.tom=ymd(n)};mark();
+const dst=d=>!d?'':d===S.today?'td':d===S.tom?'tm':d<S.today?'sn':'';
+const bad=o=>dst(o.d)?`<em class="chip s ${dst(o.d)}">${SL[dst(o.d)]}</em>`:'';
+const legend=A=>{const c=cnt(A,o=>dst(o.d)||'-');return `<div class=lgd>${['td','tm','sn'].map(k=>`<span class=k-${k}>${SL[k]} <b>${c[k]||0}</b></span>`).join('')}</div>`};
 const cls=s=>!s?'':/^(accept|ok)$/i.test(s)?'ok':/^(reject|ng|bocor|tetes)$/i.test(s)?'ng':/^n\/?a$/i.test(s)?'na':'wr';
 const cnt=(a,k)=>a.reduce((m,o)=>(m[k(o)]=(m[k(o)]||0)+1,m),{});
 const put=(k,v)=>{try{LS[k]=JSON.stringify(v)}catch(e){}};
@@ -144,7 +189,7 @@ async function login(){$('#app').innerHTML=`<div class=lg><img src="icon-192.png
 async function doLogin(){const b=$('#lb');b.classList.add('ld');
  try{const j=await api({a:'login',u:$('#lu').value,p:$('#lp').value});S.t=j.t;LS.qt=j.t;start()}catch(e){toast(e.message,1);b.classList.remove('ld')}}
 function out(){['qt','qb','qfi'].forEach(k=>LS.removeItem(k));S.t='';S.b=null;S.fi=[];S.mod={};$('#sh').classList.remove('on');login()}
-function shell(){$('#app').innerHTML=`<header class=top><img src="icon-192.png" alt=""><div><h2 id=ht></h2><small id=hs></small></div><button class=rf data-a=rf aria-label="Muat ulang">↻</button></header><main id=main></main><nav class=nav>${NAV.map(n=>`<button data-t=${n[0]}><i style="--c:${n[2].split(',')[0]};--g:linear-gradient(135deg,${n[2]})"><svg viewBox="0 0 24 24">${P[n[0]]}</svg></i><span>${n[1]}</span></button>`).join('')}</nav>`}
+function shell(){$('#app').innerHTML=`<header class=top><img src="icon-192.png" alt=""><div><h2 id=ht></h2><small id=hs></small></div><div class=clk><b id=ck></b><small id=cdt></small></div><button class=rf data-a=rf aria-label="Muat ulang">↻</button></header><main id=main></main><nav class=nav>${NAV.map(n=>`<button data-t=${n[0]}><i style="--c:${n[2].split(',')[0]};--g:linear-gradient(135deg,${n[2]})"><svg viewBox="0 0 24 24">${P[n[0]]}</svg></i><span>${n[1]}</span></button>`).join('')}</nav>`;tick()}
 async function start(){try{S.b=JSON.parse(LS.qb);S.fi=JSON.parse(LS.qfi)}catch(e){S.b=null;S.fi=[]}
  shell();if(S.b&&S.fi.length)draw();else $('#main').innerHTML='<div class=sk></div>'.repeat(5);
  try{const[b]=await Promise.all([api({a:'boot'}),loadFI()]);S.b=b;put('qb',b)}catch(e){toast(e.message,1)}
@@ -157,21 +202,21 @@ function draw(){const t=S.tab,h=TT[t];$('#ht').textContent=h[0];$('#hs').textCon
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
  $('#main').innerHTML=S.b?V[t]():'<div class=cd data-a=rf><b>Data belum termuat</b><br><small>Ketuk untuk mencoba lagi</small></div>'}
 const pct=o=>Math.round(KS.filter(k=>/^(ok|na)$/.test(cls(o[MD[k][0]]))).length/KS.length*100);
-const card=o=>`<div class=cd data-s="${o.row}"><div class=rw><b>${esc(o.Kode_Serial)}</b><em class=chip>${dfmt(o.d)}</em></div><small>${esc(short(o.Customer))} · PO ${esc(o.No_PO_Customer||'-')}</small><div class=dots>${KS.map(k=>`<u class="${cls(o[MD[k][0]])}" title="${MD[k][2]}">${MD[k][1]}</u>`).join('')}</div><div class=pg><i style="width:${pct(o)}%"></i></div></div>`;
+const card=o=>`<div class="cd ${dst(o.d)?'k-'+dst(o.d):''}" data-s="${o.row}"><div class=rw><b>${esc(o.Kode_Serial)}</b><span class=rt>${bad(o)}<em class=chip>${dfmt(o.d)}</em></span></div><small>${esc(short(o.Customer))} · PO ${esc(o.No_PO_Customer||'-')}</small><div class=dots>${KS.map(k=>`<u class="${cls(o[MD[k][0]])}" title="${MD[k][2]}">${MD[k][1]}</u>`).join('')}</div><div class=pg><i style="width:${pct(o)}%"></i></div></div>`;
 const cf=()=>S.fi.filter(o=>(!S.f.k||o.k===S.f.k)&&(!S.f.p||o.Kode_Produk===S.f.p)&&(!S.f.cu||o.Customer===S.f.cu));
 const chipsC=()=>`<div class=chips><button data-cu=""${S.f.cu?'':' class=on'}>Semua</button>${[...new Set(S.fi.map(o=>o.Customer))].filter(Boolean).sort().map(c=>`<button data-cu="${esc(c)}"${S.f.cu===c?' class=on':''}>${esc(short(c))}</button>`).join('')}</div>`;
 const srt=(a,b)=>a.d<b.d?-1:a.d>b.d?1:a.Kode_Serial<b.Kode_Serial?-1:1;
 
 function tasks(){const f=S.f,q=f.q.toLowerCase();return S.fi.filter(o=>(!f.k||o.k===f.k)&&(!f.p||o.Kode_Produk===f.p)&&(!f.c||o.Customer===f.c)&&(!f.m||o.d.slice(0,7)===f.m)&&(!f.d||o.d===f.d)&&(!q||(o.Kode_Serial+' '+o.Customer+' '+o.No_PO_Customer+' '+o.Kode_Produk).toLowerCase().includes(q))).sort(srt)}
-function tList(){const A=tasks();return `<small>${A.length} tugas</small>`+(A.slice(0,S.lim).map(card).join('')||empty('Tidak ada tugas untuk filter ini'))+more(A.length)}
+function tList(){const A=tasks();return `<small>${A.length} tugas</small>`+legend(A)+(A.slice(0,S.lim).map(card).join('')||empty('Tidak ada tugas untuk filter ini'))+more(A.length)}
 function task(){return seg()+`<div class=wr2><aside><button class="btn gh twb" data-a=tw>Filter customer · bulan · tanggal ${S.tw?'▴':'▾'}</button><div class="tb${S.tw?' open':''}">${tree()}</div></aside><section>${psel()}<div class=sr><input id=q type=search placeholder="Cari serial, PO, produk…" value="${esc(S.f.q)}"></div><div id=ls>${tList()}</div></section></div>`}
 
 function cal(){const y=S.y,m=S.mo,by={};cf().forEach(o=>{if(o.d)(by[o.d]=by[o.d]||[]).push(o)});
  const off=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),td=ymd(new Date());let tot=0,done=0,h='';
  for(let i=0;i<off;i++)h+='<span class="dy e"></span>';
  for(let d=1;d<=dim;d++){const k=y+'-'+pad(m+1)+'-'+pad(d),a=by[k]||[],n=a.length;tot+=n;done+=a.filter(o=>o['Hasil Akhir']==='Accept').length;
-  h+=`<button class="dy${n?' has':''}${k===td?' td':''}"${n?` data-d="${k}"`:''}><span>${d}</span>${n?`<em>${n}</em>`:''}</button>`}
- return seg()+chipsC()+`<div class=cb><div class=cn><button data-nv=-1 aria-label="Bulan sebelumnya">‹</button><h3>${MO[m]} ${y}</h3><button data-nv=1 aria-label="Bulan berikutnya">›</button></div><div class=cg>${['Sen','Sel','Rab','Kam','Jum','Sab','Min'].map(x=>`<small>${x}</small>`).join('')}${h}</div></div><div class=kp><div><b>${tot}</b><small>Pengiriman</small></div><div><b>${done}</b><small>Lulus final</small></div><div><b>${tot-done}</b><small>Belum lulus</small></div></div>`}
+  h+=`<button class="dy${n?' has':''}${k===td?' td':''}${n&&dst(k)?' k-'+dst(k):''}"${n?` data-d="${k}"`:''}><span>${d}</span>${n?`<em>${n}</em>`:''}</button>`}
+ return seg()+chipsC()+`<div class=cb><div class=cn><button data-nv=-1 aria-label="Bulan sebelumnya">‹</button><h3>${MO[m]} ${y}</h3><button data-nv=1 aria-label="Bulan berikutnya">›</button></div><div class=cg>${['Sen','Sel','Rab','Kam','Jum','Sab','Min'].map(x=>`<small>${x}</small>`).join('')}${h}</div></div>${legend(cf().filter(o=>o.d.slice(0,7)===y+'-'+pad(m+1)))}<div class=kp><div><b>${tot}</b><small>Pengiriman</small></div><div><b>${done}</b><small>Lulus final</small></div><div><b>${tot-done}</b><small>Belum lulus</small></div></div>`}
 
 function prog(){const A=cf(),n=A.length||1;let acc=0;
  const rows=KS.map(k=>{const c={ok:0,wr:0,ng:0,z:0};A.forEach(o=>{const z=cls(o[MD[k][0]])||'z';c[z==='na'?'ok':z]++});acc+=c.ok;
@@ -238,7 +283,7 @@ function tree(){const f=S.f,A=S.fi.filter(o=>(!f.k||o.k===f.k)&&(!f.p||o.Kode_Pr
   h+=row('l0',f.c===c&&!f.m,kc,esc(c),C[c].length,`data-sc="${esc(c)}"`,1);
   if(S.op[kc])Object.keys(M).sort().forEach(m=>{const D=g(M[m],o=>o.d),km='m'+c+m;
    h+=row('l1',f.c===c&&f.m===m&&!f.d,km,m?m.slice(5)+' - '+MO[+m.slice(5)-1]:'Tanpa tanggal',M[m].length,`data-sc="${esc(c)}" data-sm="${m}"`,1);
-   if(S.op[km])Object.keys(D).sort().forEach(d=>{h+=row('l2',f.d===d&&f.c===c,'d'+c+d,dfmt(d),D[d].length,`data-sc="${esc(c)}" data-sm="${m}" data-sd="${d}"`,0)})})});
+   if(S.op[km])Object.keys(D).sort().forEach(d=>{h+=row('l2'+(dst(d)?' k-'+dst(d):''),f.d===d&&f.c===c,'d'+c+d,dfmt(d),D[d].length,`data-sc="${esc(c)}" data-sm="${m}" data-sd="${d}"`,0)})})});
  return h}
 
 // ---------- Report Final Inspection (PDF / print) ----------
@@ -304,6 +349,9 @@ document.addEventListener('input',e=>{const t=e.target;
  if(t.id==='q'){S.f.q=t.value;S.lim=60;const l=$('#ls');if(l)l.innerHTML=S.tab==='fin'?fList():tList();return}
  if(t.dataset.k){const f=S.f,k=t.dataset.k;f[k]=t.value;if(k==='c'){f.m='';f.d=''}if(k==='m')f.d='';S.lim=60;return draw()}
  if(t.dataset.i!=null&&S.fm){S.fm.V[S.fm.m.f[t.dataset.i][0]]=t.value;S.fm.pv()}});
+function tick(){const n=new Date(),c=$('#ck');
+ if(c){c.textContent=pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());$('#cdt').textContent=n.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+ if(ymd(n)!==S.today){mark();if(S.t&&S.b)draw()}}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-S.t?start():login();
+setInterval(tick,1000);S.t?start():login();
 </script></body></html>
