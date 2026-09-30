@@ -94,7 +94,7 @@ input,select,textarea{padding:13px 15px;border-radius:14px;font-size:16px}
 .chip.na{background:#ECEEF0;color:#6B747C}.dots u.na{filter:none;opacity:1;background:#ECEEF0;border-color:#C9CFD4}.pl .na.on{background:#7B8790}
 /* ===== Liquid Glass ===== */
 :root{--bg:#E6EDF8;--ink:#1E2B3D;--mut:#5B6A7F;--pri:#2F5F94;--line:rgba(255,255,255,.6);--gl:rgba(255,255,255,.42);--gl2:rgba(255,255,255,.66);--gb:rgba(255,255,255,.72);--gs:0 10px 30px rgba(45,75,120,.13);--hl:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.3);--fh:'Nunito','Manrope',system-ui,sans-serif;--fx:blur(22px) saturate(170%)}
-.k-td{--tc:#EA7A12}.k-tm{--tc:#6555D6}.k-sn{--tc:#12857F}
+.k-td{--tc:#EA7A12}.k-tm{--tc:#6555D6}.k-sn{--tc:#12857F}.k-tl{--tc:#C7405A}
 html{background:#E4ECF7}body{background:transparent;color:var(--ink)}
 body:before{content:'';position:fixed;inset:-8%;z-index:-1;pointer-events:none;background:radial-gradient(36% 30% at 10% 6%,#9CC8F6,transparent 72%),radial-gradient(32% 28% at 92% 12%,#C9B8F6,transparent 72%),radial-gradient(38% 32% at 80% 90%,#8FDCCB,transparent 72%),radial-gradient(34% 28% at 6% 84%,#F8D2AA,transparent 72%)}
 h2,h3{font-family:var(--fh);letter-spacing:0;font-weight:800}h3{font-size:20px}.top h2{font-size:25px}
@@ -123,7 +123,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid rgba(47,95,148,.35);bo
 /* Tanda jadwal: hari ini (oranye), besok (ungu), terkirim (teal) */
 .rt{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .chip.s{color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.4)}
-.chip.s.td{background:linear-gradient(135deg,#EA7A12,#F5A54A)}.chip.s.tm{background:linear-gradient(135deg,#5546CC,#8B7CEE)}.chip.s.sn{background:linear-gradient(135deg,#0E7B75,#2DB0A6)}
+.chip.s.td{background:linear-gradient(135deg,#EA7A12,#F5A54A)}.chip.s.tm{background:linear-gradient(135deg,#5546CC,#8B7CEE)}.chip.s.sn{background:linear-gradient(135deg,#0E7B75,#2DB0A6)}.chip.s.tl{background:linear-gradient(135deg,#B8324D,#E0647B)}
 .cd[class*=k-]{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 16%,transparent),var(--gl) 60%);box-shadow:var(--gs),var(--hl),inset 5px 0 0 var(--tc)}
 .lgd{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 2px 10px;font-size:12.5px;font-weight:700;color:var(--mut)}
 .lgd span{display:inline-flex;align-items:center;gap:6px}.lgd span:before{content:'';width:10px;height:10px;border-radius:50%;background:var(--tc);box-shadow:0 0 0 3px color-mix(in srgb,var(--tc) 24%,transparent)}.lgd b{color:var(--ink)}
@@ -153,11 +153,15 @@ const now=new Date();S.y=now.getFullYear();S.mo=now.getMonth();
 const pad=n=>('0'+n).slice(-2),ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 const dfmt=d=>d?+d.slice(8,10)+' '+MO[+d.slice(5,7)-1].slice(0,3)+' '+d.slice(0,4):'-';
 const short=c=>String(c||'').replace(/^PT\s+/i,'');
-const SL={td:'Hari ini',tm:'Besok',sn:'Terkirim'};
+const SL={td:'Hari ini',tm:'Besok',sn:'Terkirim',tl:'Terlambat'};
 const mark=()=>{const n=new Date();S.today=ymd(n);n.setDate(n.getDate()+1);S.tom=ymd(n)};mark();
-const dst=d=>!d?'':d===S.today?'td':d===S.tom?'tm':d<S.today?'sn':'';
-const bad=o=>dst(o.d)?`<em class="chip s ${dst(o.d)}">${SL[dst(o.d)]}</em>`:'';
-const legend=A=>{const c=cnt(A,o=>dst(o.d)||'-');return `<div class=lgd>${['td','tm','sn'].map(k=>`<span class=k-${k}>${SL[k]} <b>${c[k]||0}</b></span>`).join('')}</div>`};
+// Status kirim dibaca dari kolom pengiriman di sheet Final_Inspection. Jika nama kolom tidak terdeteksi otomatis, isi window.KOL_KIRIM='Nama_Kolom' di atas.
+const sh=(o,kc)=>{const r=kc&&o[kc]!=null?String(o[kc]).trim():'';o.sk=!!r&&!/^(-|belum|null)$/i.test(r);o.sd=/^\d{4}-\d\d-\d\d/.test(r)?r.slice(0,10):''};
+const ds=d=>!d?'':d===S.today?'td':d===S.tom?'tm':d<S.today?'tl':'';
+const ust=o=>o.sk?'sn':ds(o.d);
+const dsA=(d,A)=>A&&A.length&&A.every(o=>o.sk)?'sn':ds(d);
+const bad=o=>{const s=ust(o);return s?`<em class="chip s ${s}">${SL[s]}${s==='sn'&&o.sd?' '+dfmt(o.sd):''}</em>`:''};
+const legend=A=>{const c=cnt(A,o=>ust(o)||'-');return `<div class=lgd>${['td','tm','sn','tl'].map(k=>`<span class=k-${k}>${SL[k]} <b>${c[k]||0}</b></span>`).join('')}</div>`};
 const cls=s=>!s?'':/^(accept|ok)$/i.test(s)?'ok':/^(reject|ng|bocor|tetes)$/i.test(s)?'ng':/^n\/?a$/i.test(s)?'na':'wr';
 const cnt=(a,k)=>a.reduce((m,o)=>(m[k(o)]=(m[k(o)]||0)+1,m),{});
 const put=(k,v)=>{try{LS[k]=JSON.stringify(v)}catch(e){}};
@@ -180,7 +184,8 @@ async function api(q){busy(1);try{const j=await send(Object.assign({},q,{t:S.t})
 const rowsOf=j=>j.rows.map(r=>{const o={};j.cols.forEach((c,i)=>o[c]=r[i]);o.row=r[r.length-1];return o});
 async function loadFI(){const[j,ju]=await Promise.all([api({a:'list',m:'Final_Inspection'}),api({a:'list',m:'FitUp_Inspection'})]),kt={};
  rowsOf(ju).forEach(r=>{if(r.Kode_Serial)kt[r.Kode_Serial]=r.Kategori});S.mod.FitUp_Inspection=ju;
- S.fi=rowsOf(j).filter(o=>o.Kode_Serial).map(o=>(o.d=String(o.Tanggal_Kirim_Diminta||'').slice(0,10),o.k=/built/i.test(kt[o.Kode_Serial]||'')?'Builtup':/counter/i.test(kt[o.Kode_Serial]||'')?'Counterweight':'',o));put('qfi',S.fi)}
+ const kc=window.KOL_KIRIM||(a=>a.find(c=>/tanggal|tgl|date/i.test(c))||a[0])(j.cols.filter(c=>/kirim|deliver|shipp/i.test(c)&&!/diminta|request/i.test(c)));
+ S.fi=rowsOf(j).filter(o=>o.Kode_Serial).map(o=>(o.d=String(o.Tanggal_Kirim_Diminta||'').slice(0,10),sh(o,kc),o.k=/built/i.test(kt[o.Kode_Serial]||'')?'Builtup':/counter/i.test(kt[o.Kode_Serial]||'')?'Counterweight':'',o));put('qfi',S.fi)}
 
 // ---------- Login & start ----------
 async function login(){$('#app').innerHTML=`<div class=lg><img src="icon-192.png" alt=""><h2>QC Inspector</h2><small>PT Murinda Sentra Baja</small><select id=lu><option>Memuat pengguna…</option></select><input id=lp type=password placeholder=Password autocomplete=current-password><button class=btn id=lb data-a=lg>Masuk</button></div>`;
@@ -202,7 +207,7 @@ function draw(){const t=S.tab,h=TT[t];$('#ht').textContent=h[0];$('#hs').textCon
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
  $('#main').innerHTML=S.b?V[t]():'<div class=cd data-a=rf><b>Data belum termuat</b><br><small>Ketuk untuk mencoba lagi</small></div>'}
 const pct=o=>Math.round(KS.filter(k=>/^(ok|na)$/.test(cls(o[MD[k][0]]))).length/KS.length*100);
-const card=o=>`<div class="cd ${dst(o.d)?'k-'+dst(o.d):''}" data-s="${o.row}"><div class=rw><b>${esc(o.Kode_Serial)}</b><span class=rt>${bad(o)}<em class=chip>${dfmt(o.d)}</em></span></div><small>${esc(short(o.Customer))} · PO ${esc(o.No_PO_Customer||'-')}</small><div class=dots>${KS.map(k=>`<u class="${cls(o[MD[k][0]])}" title="${MD[k][2]}">${MD[k][1]}</u>`).join('')}</div><div class=pg><i style="width:${pct(o)}%"></i></div></div>`;
+const card=o=>`<div class="cd ${ust(o)?'k-'+ust(o):''}" data-s="${o.row}"><div class=rw><b>${esc(o.Kode_Serial)}</b><span class=rt>${bad(o)}<em class=chip>${dfmt(o.d)}</em></span></div><small>${esc(short(o.Customer))} · PO ${esc(o.No_PO_Customer||'-')}</small><div class=dots>${KS.map(k=>`<u class="${cls(o[MD[k][0]])}" title="${MD[k][2]}">${MD[k][1]}</u>`).join('')}</div><div class=pg><i style="width:${pct(o)}%"></i></div></div>`;
 const cf=()=>S.fi.filter(o=>(!S.f.k||o.k===S.f.k)&&(!S.f.p||o.Kode_Produk===S.f.p)&&(!S.f.cu||o.Customer===S.f.cu));
 const chipsC=()=>`<div class=chips><button data-cu=""${S.f.cu?'':' class=on'}>Semua</button>${[...new Set(S.fi.map(o=>o.Customer))].filter(Boolean).sort().map(c=>`<button data-cu="${esc(c)}"${S.f.cu===c?' class=on':''}>${esc(short(c))}</button>`).join('')}</div>`;
 const srt=(a,b)=>a.d<b.d?-1:a.d>b.d?1:a.Kode_Serial<b.Kode_Serial?-1:1;
@@ -215,7 +220,7 @@ function cal(){const y=S.y,m=S.mo,by={};cf().forEach(o=>{if(o.d)(by[o.d]=by[o.d]
  const off=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),td=ymd(new Date());let tot=0,done=0,h='';
  for(let i=0;i<off;i++)h+='<span class="dy e"></span>';
  for(let d=1;d<=dim;d++){const k=y+'-'+pad(m+1)+'-'+pad(d),a=by[k]||[],n=a.length;tot+=n;done+=a.filter(o=>o['Hasil Akhir']==='Accept').length;
-  h+=`<button class="dy${n?' has':''}${k===td?' td':''}${n&&dst(k)?' k-'+dst(k):''}"${n?` data-d="${k}"`:''}><span>${d}</span>${n?`<em>${n}</em>`:''}</button>`}
+  h+=`<button class="dy${n?' has':''}${k===td?' td':''}${n&&dsA(k,a)?' k-'+dsA(k,a):''}"${n?` data-d="${k}"`:''}><span>${d}</span>${n?`<em>${n}</em>`:''}</button>`}
  return seg()+chipsC()+`<div class=cb><div class=cn><button data-nv=-1 aria-label="Bulan sebelumnya">‹</button><h3>${MO[m]} ${y}</h3><button data-nv=1 aria-label="Bulan berikutnya">›</button></div><div class=cg>${['Sen','Sel','Rab','Kam','Jum','Sab','Min'].map(x=>`<small>${x}</small>`).join('')}${h}</div></div>${legend(cf().filter(o=>o.d.slice(0,7)===y+'-'+pad(m+1)))}<div class=kp><div><b>${tot}</b><small>Pengiriman</small></div><div><b>${done}</b><small>Lulus final</small></div><div><b>${tot-done}</b><small>Belum lulus</small></div></div>`}
 
 function prog(){const A=cf(),n=A.length||1;let acc=0;
@@ -283,7 +288,7 @@ function tree(){const f=S.f,A=S.fi.filter(o=>(!f.k||o.k===f.k)&&(!f.p||o.Kode_Pr
   h+=row('l0',f.c===c&&!f.m,kc,esc(c),C[c].length,`data-sc="${esc(c)}"`,1);
   if(S.op[kc])Object.keys(M).sort().forEach(m=>{const D=g(M[m],o=>o.d),km='m'+c+m;
    h+=row('l1',f.c===c&&f.m===m&&!f.d,km,m?m.slice(5)+' - '+MO[+m.slice(5)-1]:'Tanpa tanggal',M[m].length,`data-sc="${esc(c)}" data-sm="${m}"`,1);
-   if(S.op[km])Object.keys(D).sort().forEach(d=>{h+=row('l2'+(dst(d)?' k-'+dst(d):''),f.d===d&&f.c===c,'d'+c+d,dfmt(d),D[d].length,`data-sc="${esc(c)}" data-sm="${m}" data-sd="${d}"`,0)})})});
+   if(S.op[km])Object.keys(D).sort().forEach(d=>{h+=row('l2'+(dsA(d,D[d])?' k-'+dsA(d,D[d]):''),f.d===d&&f.c===c,'d'+c+d,dfmt(d),D[d].length,`data-sc="${esc(c)}" data-sm="${m}" data-sd="${d}"`,0)})})});
  return h}
 
 // ---------- Report Final Inspection (PDF / print) ----------
