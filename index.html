@@ -121,7 +121,15 @@ const more=n=>n>S.lim?`<button class="btn gh" data-a=mo>Tampilkan lebih banyak (
 let tt,bc=0;
 const toast=(m,e)=>{const t=$('#toast');t.textContent=m;t.className='on'+(e?' er':'');clearTimeout(tt);tt=setTimeout(()=>t.className='',2800)};
 const busy=d=>{bc+=d;$('#bar').classList.toggle('on',bc>0)};
-async function api(q){busy(1);try{const r=await fetch(API,{method:'POST',body:JSON.stringify(Object.assign({},q,{t:S.t}))}),j=await r.json();
+// Kirim POST; jika Google membalas teks doGet (POST dialihkan jadi GET), ulangi lewat GET ?p=. Balasan HTML dijelaskan, bukan crash.
+async function send(o){
+ const body=JSON.stringify(o);
+ let t=await (await fetch(API,{method:'POST',body})).text();
+ if(/^\s*QC Inspector MSB API aktif/.test(t))t=await (await fetch(API+(API.includes('?')?'&':'?')+'p='+encodeURIComponent(body))).text();
+ try{return JSON.parse(t)}
+ catch(e){throw Error(/^\s*</.test(t)?'Server membalas halaman HTML, bukan data. Periksa deployment Apps Script: akses "Siapa saja" dan deploy versi terbaru.':'Balasan server tidak dikenali: '+t.slice(0,60))}
+}
+async function api(q){busy(1);try{const j=await send(Object.assign({},q,{t:S.t}));
  if(!j.ok){if(j.err==='AUTH'){out();throw Error('Sesi berakhir, silakan masuk lagi')}throw Error(j.err)}return j}
  catch(e){throw e.message==='Failed to fetch'?Error('Tidak ada koneksi ke server'):e}finally{busy(-1)}}
 const rowsOf=j=>j.rows.map(r=>{const o={};j.cols.forEach((c,i)=>o[c]=r[i]);o.row=r[r.length-1];return o});
